@@ -1,0 +1,135 @@
+@each $brkpoint, $value in $media-break-points {
+    @if $brkpoint == 'xs' {
+        .w-50 {
+            width: 50%;
+        }
+
+        .w-100 {
+            width: 100%;
+        }
+
+        .w-unset {
+            width: unset;
+        }
+
+        .w-auto {
+            width: auto;
+        }
+
+        .d-none {
+            display: none !important;
+        }
+
+        .d-block {
+            display: block !important;
+        }
+
+        .d-flex {
+            display: flex !important;
+        }
+
+        .d-inline-flex {
+            display: inline-flex !important;
+        }
+
+        .d-inline-block {
+            display: inline-block !important;
+        }
+
+        .d-grid {
+            display: grid !important;
+        }
+
+        .justify-content-start {
+            justify-content: flex-start;
+        }
+
+        .justify-content-end {
+            justify-content: flex-end
+        }
+
+        .justify-content-center {
+            justify-content: center;
+        }
+
+        .justify-content-between {
+            justify-content: space-between;
+        }
+
+        .align-items-start {
+            justify-content: flex-start;
+        }
+
+        .align-items-end {
+            justify-content: flex-end
+        }
+
+        .align-items-center {
+            justify-content: center;
+        }
+
+    } @else {
+        @include media-breakpoint-up($brkpoint) {
+
+            .w-#{$brkpoint}-50 {
+                width: 50%;
+            }
+
+            .w-#{$brkpoint}-100 {
+                width: 100%;
+            }
+
+            .w-#{$brkpoint}-unset {
+                width: unset;
+            }
+
+            .w-#{$brkpoint}-auto {
+                width: auto;
+            }
+
+            .d-#{$brkpoint}-none {
+                display: none !important;
+            }
+
+            .d-#{$brkpoint}-block {
+                display: block !important;
+            }
+
+            .d-#{$brkpoint}-flex {
+                display: flex !important;
+            }
+
+            .d-#{$brkpoint}-grid {
+                display: grid;
+            }
+
+            .justify-content-#{$brkpoint}-start {
+                justify-content: flex-start;
+            }
+
+            .justify-content-#{$brkpoint}-end {
+                justify-content: flex-end
+            }
+
+            .justify-content-#{$brkpoint}-center {
+                justify-content: center;
+            }
+
+            .justify-content-#{$brkpoint}-between {
+                justify-content: space-between;
+            }
+
+            .align-items-#{$brkpoint}-start {
+                justify-content: flex-start;
+            }
+
+            .align-items-#{$brkpoint}-end {
+                justify-content: flex-end
+            }
+
+            .align-items-#{$brkpoint}-center {
+                justify-content: center;
+            }
+        }
+    }
+}

@@ -1,0 +1,123 @@
+@function get-break-point($size: sm) {
+    $media-size: map-get($media-break-points, $size);
+    @return $media-size+px;
+}
+
+// Name of the next breakpoint, or null for the last breakpoint.
+@function breakpoint-next($name,
+    $breakpoints: $media-break-points,
+    $breakpoint-names: map-keys($breakpoints)) {
+    $n: index($breakpoint-names, $name);
+    @return if($n !=null and $n < length($breakpoint-names),
+            nth($breakpoint-names, $n + 1),
+            null);
+}
+
+// Minimum breakpoint width. Null for the smallest (first) breakpoint.
+@function breakpoint-min($name, $breakpoints: $media-break-points) {
+    $min: map-get($breakpoints, $name);
+    @return if($min !=0, $min, null);
+}
+
+// Maximum breakpoint width. Null for the largest (last) breakpoint.
+@function breakpoint-max($name, $breakpoints: $media-break-points) {
+    //$next: breakpoint-next($name, $breakpoints);
+    //@return if($next, breakpoint-min($next, $breakpoints) - .02, null);
+    $max: map-get($breakpoints, $name);
+    @return if($max !=0, $max, null);
+}
+
+// Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
+// Makes the @content apply to the given breakpoint and wider.
+@mixin media-breakpoint-up($name, $breakpoints: $media-break-points) {
+    $min: breakpoint-min($name, $breakpoints);
+
+    @if $min {
+        @media (min-width: $min) {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}
+
+// Media of at most the maximum breakpoint width. No query for the largest breakpoint.
+// Makes the @content apply to the given breakpoint and narrower.
+@mixin media-breakpoint-down($name, $breakpoints: $media-break-points) {
+    $max: breakpoint-max($name, $breakpoints);
+
+    @if $max {
+        @media (max-width: ($max - .02px)) {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}
+
+// Media that spans multiple breakpoint widths.
+// Makes the @content apply between the min and max breakpoints
+@mixin media-breakpoint-between($lower,
+    $upper,
+    $breakpoints: $media-break-points) {
+    $min: breakpoint-min($lower, $breakpoints);
+    $max: breakpoint-max($upper, $breakpoints);
+
+    @if $min !=null and $max !=null {
+        @media (min-width: $min) and (max-width: $max - .02px) {
+            @content;
+        }
+    } @else if $max==null {
+        @include media-breakpoint-up($lower, $breakpoints) {
+            @content;
+        }
+    } @else if $min==null {
+        @include media-breakpoint-down($upper, $breakpoints) {
+            @content;
+        }
+    }
+}
+
+// Media between the breakpoint's minimum and maximum widths.
+// No minimum for the smallest breakpoint, and no maximum for the largest one.
+// Makes the @content apply only to the given breakpoint, not viewports any wider or narrower.
+@mixin media-breakpoint-only($name, $breakpoints: $media-break-points) {
+    $min: breakpoint-min($name, $breakpoints);
+    $next: breakpoint-next($name, $breakpoints);
+    $max: breakpoint-max($next);
+
+    @if $min != null and $max != null {
+        @media (min-width: $min) and (max-width: $max - .02px) {
+            @content;
+        }
+    } @else if $max == null {
+        @include media-breakpoint-up($name, $breakpoints) {
+            @content;
+        }
+    } @else if $min == null {
+        @include media-breakpoint-down($next, $breakpoints) {
+            @content;
+        }
+    }
+}
+
+// Custom devices
+@mixin media($min: null, $max: null) {
+    @if ($min !=null and $max==null) {
+        @media (min-width: $min) {
+            @content ;
+        }
+    }
+
+    @if ($min==null and $max !=null) {
+        @media (max-width: $max) {
+            @content ;
+        }
+    }
+
+    @if ($min !=null and $max !=null) {
+        @media (min-width: $min) and (max-width: $max) {
+            @content ;
+        }
+    }
+}

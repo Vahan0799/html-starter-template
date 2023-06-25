@@ -1,0 +1,19 @@
+// Global
+@import 'global/variables';
+@import 'global/mixins';
+@import 'global/reset';
+@import 'global/functions/utilizes';
+@import 'global/typography';
+@import 'global/utilities';
+
+// Components
+@import 'components/buttons';
+@import 'components/swiper';
+@import 'components/lazy';
+
+// Layouts
+@import 'layouts/header';
+@import 'layouts/footer';
+
+// Pages
+@import 'pages/home';

@@ -1,0 +1,61 @@
+// Media Breakpoints
+$media-break-points: (
+	xs: 0,
+	sm: 576px,
+	md: 768px,
+	lg: 992px,
+	xl: 1280px,
+	xxl: 1440px,
+) !default;
+
+$white:             #fff !default;
+$black:             #000 !default;
+
+// Primary
+$primary-primary:   #133778 !default;
+
+// Secondary
+$secondary-primary: #266CF7 !default;
+
+// Tertiary
+$tertiary-primary:  #04203E !default;
+
+// Text
+$text-800:          #354153 !default;
+
+$primary: $primary-primary;
+$secondary: $secondary-primary;
+$tertiary: $tertiary-primary;
+
+$bodyText: $text-800;
+
+// Colors for mapping
+$colors: (
+	'primary': $primary,
+	'secondary': $secondary,
+	'tertiary': $tertiary,
+	'white': $white,
+	'black': $black,
+) !default;
+
+$font-family-primary: 'Jura', sans-serif !default;
+$font-family-secondary: 'Manrope', sans-serif !default;
+
+$body-font: $font-family-primary;
+
+$base-font-size: 16px;
+$base-font-size-m: 14px;
+$base-line-height: normal;
+$base-letter-spacing: normal;
+
+$h1-font-size:      48px !default;
+$h1-font-size-m:    24px !default;
+$h2-font-size:      40px !default;
+$h2-font-size-m:    28px !default;
+$h3-font-size:      30px !default;
+$h3-font-size-m:    20px !default;
+$h4-font-size:      24px !default;
+$h4-font-size-m:    20px !default;
+$h5-font-size:      18px !default;
+$h5-font-size-m:    16px !default;
+$h6-font-size:      16px !default;

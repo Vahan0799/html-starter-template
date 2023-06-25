@@ -1,0 +1,87 @@
+@import 'mixins/breakpoint';
+@import 'mixins/center';
+@import 'mixins/placeholder';
+
+@function mat-color($palette, $hue: default, $opacity: null) {
+
+    // If hueKey is a number between zero and one, then it actually contains an
+    // opacity value, so recall this function with the default hue and that given opacity.
+    @if type-of($hue)==number and $hue>=0 and $hue <=1 {
+        @return mat-color($palette, default, $hue);
+    }
+
+    $color: map-get($palette, $hue);
+    $opacity: if($opacity==null, opacity($color), $opacity);
+
+    @return rgba($color, $opacity);
+}
+
+$default-pixel: 16;
+
+@function rem-cal($target-pixel) {
+    @return $target-pixel/$default-pixel+rem;
+}
+
+@mixin aspect-ratio-update($width, $height) {
+    &:before {
+        padding-top: ($height / $width) * 100%;
+    }
+}
+
+@mixin aspect-ratio($width, $height) {
+    position: relative;
+
+    &:before {
+        display: block;
+        content: '';
+        width: 100%;
+        padding-top: ($height / $width) * 100%;
+    }
+
+    > * {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+}
+
+@mixin opacity($value) {
+    $IEValue: $value * 100;
+    opacity: $value;
+    -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity='+ $IEValue + ')';
+    filter: alpha(opacity=$IEValue);
+}
+
+@mixin resizable($direction) {
+    overflow: auto; // Per CSS3 UI, `resize` only applies when `overflow` isn't `visible`
+    resize: $direction; // Options: horizontal, vertical, both
+}
+
+@mixin img-fluid {
+    // Keep images from scaling beyond the width of their parents.
+    // Part 1: Set a maximum relative to the parent
+    max-width: 100%;
+    // Part 2: Override the height to auto, otherwise images will be stretched
+    // when setting a width and height attribute on the img element.
+    height: auto;
+}
+
+@mixin text-truncate() {
+    // Text truncate
+    // Requires inline-block or block for proper styling
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@mixin vertical-text() {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    //text-orientation: upright;
+    //text-orientation: sideways-right;
+    //text-orientation: sideways;
+    //text-orientation: use-glyph-orientation;
+}

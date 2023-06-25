@@ -1,0 +1,32 @@
+@mixin placeholder-color($color) {
+  &::-webkit-input-placeholder {
+    /* WebKit browsers */
+    color: $color !important;
+  }
+
+  &:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: $color !important;
+    opacity: 1;
+  }
+
+  &::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: $color !important;
+  }
+
+  &:-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    color: $color !important;
+  }
+  &::placeholder {
+    color: $color !important;
+  }
+}
+
+@mixin placeholder {
+  &::-webkit-input-placeholder {@content}
+  &:-moz-placeholder           {@content}
+  &::-moz-placeholder          {@content}
+  &:-ms-input-placeholder      {@content}  
+}

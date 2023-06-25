@@ -1,0 +1,26 @@
+// Adding Font Sizes
+@mixin text($size: null, $lineHeight: null, $color: null, $weight: null, $letter-spacing: null, $font: null) {
+  @if $font != null {
+    font-family: $font;
+  }
+
+  @if $size != null {
+    font-size: $size;
+  }
+
+  @if $lineHeight != null {
+    line-height: $lineHeight;
+  }
+  
+  @if $color != null {
+    color: $color;
+  }
+
+  @if $weight != null {
+    font-weight: $weight;
+  }
+
+  @if $letter-spacing != null {
+    letter-spacing: $letter-spacing;
+  }
+}

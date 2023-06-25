@@ -1,0 +1,26 @@
+@import 'node_modules/swiper/swiper';
+//@import 'node_modules/swiper/modules/a11y/a11y';
+//@import 'node_modules/swiper/modules/effect-cards/effect-cards';
+//@import 'node_modules/swiper/modules/effect-creative/effect-creative';
+//@import 'node_modules/swiper/modules/effect-cube/effect-cube';
+//@import 'node_modules/swiper/modules/effect-fade/effect-fade';
+//@import 'node_modules/swiper/modules/effect-flip/effect-flip';
+//@import 'node_modules/swiper/modules/free-mode/free-mode';
+//@import 'node_modules/swiper/modules/lazy/lazy';
+@import 'node_modules/swiper/modules/pagination/pagination';
+@import 'node_modules/swiper/modules/navigation/navigation';
+//@import 'node_modules/swiper/modules/scrollbar/scrollbar';
+//@import 'node_modules/swiper/modules/virtual/virtual';
+//@import 'node_modules/swiper/modules/zoom/zoom';
+
+.swiper {
+    &-pagination {
+        &-bullet {
+        }
+    }
+
+    &-button-disabled {
+        opacity: 0.4;
+        pointer-events: none;
+    }
+}

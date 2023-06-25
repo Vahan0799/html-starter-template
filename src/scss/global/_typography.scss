@@ -1,0 +1,53 @@
+body {
+    font-family: $body-font;
+    font-size: $base-font-size-m;
+    font-weight: 400;
+    line-height: 1.188;
+    color: $bodyText;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    background-color: $white;
+
+    @include media-breakpoint-up(lg) {
+        font-size: $base-font-size;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $font-family-primary;
+    font-weight: 400;
+    color: inherit;
+    line-height: 1.1925;
+}
+
+h1,
+.h1 {
+    font-family: $font-family-secondary;
+    font-size: $h1-font-size-m;
+
+    @include media-breakpoint-up(lg) {
+        font-size: $h1-font-size;
+    }
+}
+
+h2,
+.h2 {
+    font-size: $h2-font-size-m;
+
+    @include media-breakpoint-up(lg) {
+        font-size: $h2-font-size;
+    }
+}
+
+h4,
+.h4,
+.sub-title {
+    font-size: $h4-font-size;
+}

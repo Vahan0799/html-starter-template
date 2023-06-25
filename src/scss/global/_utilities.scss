@@ -1,0 +1,14 @@
+.lock-scroll {
+    overflow: hidden;
+
+    @include media-breakpoint-up(lg) {
+        padding-right: 8px;
+    }
+
+    @include media-breakpoint-down(lg) {
+        position: relative;
+        touch-action: none;
+        -ms-touch-action: none;
+        height: 100%;
+    }
+}
