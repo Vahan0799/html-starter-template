@@ -1,3 +1,9 @@
+.page {
+    & > svg {
+        display: none;
+    }
+}
+
 .lock-scroll {
     overflow: hidden;
 

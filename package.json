@@ -2,8 +2,8 @@
     "name": "html-start-template",
     "version": "1.0.0",
     "scripts": {
-        "watch": "gulp",
-        "build": "gulp build"
+        "watch": "gulp --openssl-legacy-provider",
+        "build": "gulp build --openssl-legacy-provider"
     },
     "dependencies": {
         "dom7": "^4.0.6",

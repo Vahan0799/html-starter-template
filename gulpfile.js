@@ -76,8 +76,7 @@ function serve() {
 		server: {
 			baseDir: './' + distPath,
 		},
-		// port: 3008
-		port: 3008,
+		port: 3000,
 		ui: false
 	});
 }
@@ -193,6 +192,11 @@ function js(cb) {
 				output: {
 					filename: 'custom.min.js',
 				},
+				performance: {
+					hints: false,
+					maxEntrypointSize: 2000,
+					maxAssetSize: 2000
+				},
 				module: {
 					rules: [
 						{
@@ -233,6 +237,11 @@ function jsWatch(cb) {
 				output: {
 					filename: 'custom.min.js',
 				},
+				performance: {
+					hints: false,
+					maxEntrypointSize: 2000,
+					maxAssetSize: 2000
+				}
 			})
 		)
 		// .pipe(dest(extraPath))
